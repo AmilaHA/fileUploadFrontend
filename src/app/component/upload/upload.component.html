@@ -1,0 +1,121 @@
+<div class="upload-container">
+  <div class="upload-header">
+    <h1>File Upload Form</h1>
+  </div>
+  <div class="upload-content">
+    <div>
+      <h3>Upload Single File</h3>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+        <div class="single-upload">
+          <div>
+            <label>
+              File:
+              <input formControlName="file" id="singleFileUploadInput" type="file" name="file" class="file-input" (change)="selectFile($event)"/>
+            </label>
+            <div class="class-red" *ngIf="myForm['file'].invalid && (myForm['file'].dirty || myForm['file'].touched)">
+              <div *ngIf="myForm['file'].errors && myForm['file'].errors['required']">File is required.</div>
+            </div>
+          </div>
+          <div>
+            <label>
+              Email:
+              <input formControlName="email" type="text" name="email" class="file-text" placeholder="Your email">
+            </label>
+            <div class="class-red"  *ngIf="myForm['email'].invalid && (myForm['email'].dirty || myForm['email'].touched)">
+              Please provide a valid email address.
+            </div>
+          </div>
+          <div>
+            <label>
+              Module:
+            </label>
+            <select class="custom-select" (change)="changeModule({e : $event})" formControlName="module">
+              <option value="">Choose your module</option>
+              <option *ngFor="let module of moduleList" [ngValue]="module">{{module}}</option>
+            </select>
+            <div class="class-red"  *ngIf="myForm['module'].invalid && (myForm['module'].dirty || myForm['module'].touched)">
+              <div *ngIf="myForm['module'].errors && myForm['module'].errors['required']">
+                Module is required
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>
+              Major Type:
+            </label>
+            <select class="custom-select" (change)="changeMajor({e : $event})" formControlName="major">
+              <option value="">Choose your major</option>
+              <option *ngFor="let major of majorList" [ngValue]="major">{{major}}</option>
+            </select>
+            <div class="class-red"  *ngIf="myForm['major'].invalid && (myForm['major'].dirty || myForm['major'].touched)">
+              <div *ngIf="myForm['major'].errors && myForm['major'].errors['required']">
+                Major is required
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>
+              Main Type:
+            </label>
+            <select class="custom-select" (change)="changeMain({e : $event})" formControlName="main">
+              <option value="">Choose your main type</option>
+              <option *ngFor="let main of mainList" [ngValue]="main">{{main}}</option>
+            </select>
+            <div class="class-red"  *ngIf="myForm['main'].invalid && (myForm['main'].dirty || myForm['main'].touched)">
+              <div *ngIf="myForm['main'].errors && myForm['main'].errors['required']">
+                Main type is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <label>
+              Text 1:
+              <input formControlName="text1" type="text" name="email" class="file-text" placeholder="Your text 1">
+            </label>
+            <div class="class-red"  *ngIf="myForm['text1'].invalid && (myForm['text1'].dirty || myForm['text1'].touched)">
+              <div>
+                Please provide a valid value.
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>
+              Text 2:
+              <input formControlName="text2" type="text" name="email" class="file-text" placeholder="Your text 2">
+            </label>
+            <div class="class-red" *ngIf="myForm['text2'].invalid && (myForm['text2'].dirty || myForm['text2'].touched)">
+              <div>
+                Please provide a valid value.
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>
+              Text 3:
+              <input formControlName="text3" type="text" name="email" class="file-text" placeholder="Your text 3">
+            </label>
+            <div class="class-red" *ngIf="myForm['text3'].invalid && (myForm['text3'].dirty || myForm['text3'].touched)">
+              <div>
+                Please provide a valid value.
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>
+              Text 4:
+              <input formControlName="text4" type="text" name="email" class="file-text" placeholder="Your text 4">
+            </label>
+            <div class="class-red"  *ngIf="myForm['text4'].invalid && (myForm['text4'].dirty || myForm['text4'].touched)">
+              <div>
+                Please provide a valid value.
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="primary submit-btn" [disabled]="form.invalid">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
